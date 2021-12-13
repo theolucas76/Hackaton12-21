@@ -1,7 +1,6 @@
 <?php
 
 $hour = ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30", "12:35", "12:40", "12:45", "12:50", "12:55", "13:00"];
-
 ?>
 
 <!DOCTYPE html>
@@ -16,15 +15,13 @@ $hour = ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30", "12:35",
     <title>Document</title>
 </head>
 <body>
-<?php include("fonctions.php");?>
-    <form id="validateSlot" method="POST" action="fonctions.php">
-
+<?php
+    echo $_POST['hour'];
+?>
+    <form id="validateSlot" method="POST" action="index.php">
         <?php foreach($hour as $key => $value){ ?>
-
-        <button id="<?= $key ?>" name="submitHour" class="btn btn-danger" type="submit" data-hour="<?= $value ?>"><?= $value ?></button>
-
+            <input id="<?= $key ?>" name="hour" class="btn btn-danger" type="submit" data-hour="<?= $value ?>" value="<?= $value ?>"/>
         <?php } ?>
-
     </form>
 
     <script src="script.js"></script>
