@@ -4,7 +4,7 @@
 
         document.getElementById('validateSlot').addEventListener('click', e => {
             e.preventDefault()
-            if(e.target.nodeName == "BUTTON"){
+            if(e.target.nodeName == "INPUT"){
                 let form = e.currentTarget;
                 Swal.fire({
                     title: 'Confirmation de réservation',
@@ -13,11 +13,11 @@
                     confirmButtonText: 'Réserver maintenant'
                 }).then(function(confirm) {
                     if (confirm.isConfirmed) {
+                        form.method = 'POST';
+                        form.innerHTML = `<input name="hour" value="${e.target.dataset.hour}">`;
                         form.submit();
                     }
                 });
             }
         })
-
-
     })

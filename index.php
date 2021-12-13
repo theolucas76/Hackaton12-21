@@ -16,11 +16,22 @@ $hour = ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30", "12:35",
     <title>Document</title>
 </head>
 <body>
-    <form id ="validateSlot" method="POST" action="">
+
+<?php
+
+if(isset($_POST['hour'])){
+    echo $_POST['hour'];
+}else{
+    echo "pas set";
+}
+
+?>
+
+    <form id ="validateSlot" method="POST" action="index.php">
 
         <?php foreach($hour as $key => $value){ ?>
 
-        <button id="<?= $key ?>" name="hour" class="btn btn-danger" type="submit" data-hour="<?= $value ?>"><?= $value ?></button>
+        <input id="<?= $key ?>" name="hour" class="btn btn-danger" type="submit" data-hour="<?= $value ?>" value="<?= $value ?>">
 
         <?php } ?>
 
