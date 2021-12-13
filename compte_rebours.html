@@ -12,7 +12,7 @@
         function hourly_count() {
             var hourly_count = document.getElementById("hourly_count");
             var date_today = new Date();
-            var date_evenement = new Date("Dec 13 15:00:00 2021");
+            var date_evenement = new Date("Dec 13 15:07:00 2021");
             var total_secondes = (date_evenement - date_today) / 1000;
             if (total_secondes > 0) {
                 var jours = Math.floor(total_secondes / (60 * 60 * 24));
@@ -22,7 +22,11 @@
                 hourly_count.innerHTML =' ' + heures + ' ' + ":" + ' ' + minutes + ' ' + ":" + ' ' + ' ' + secondes + ' ';
             } else {
                 hourly_count.innerHTML = 'Compte à rebours terminé';
+                var myAudio = document.createElement("audio");
+                myAudio.src = "best-of-les-rires-hors-du-commun-partie-1.mp3";
+                myAudio.play();
             }
+    
             var actualisation = setTimeout("hourly_count();", 1000);
         }
         hourly_count();
