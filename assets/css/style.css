@@ -1,0 +1,40 @@
+.button2 {
+    background-color: #ac2317;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+
+
+.button3 {
+    background-color: #ac2317;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.buttonNext {
+    background-color: #ac2317;
+    width:200px;
+    height: 50px;
+    border-radius: 20px;
+
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #f4f7f8 !important;
+}
+.connexion{
+    margin-top: 40%;
+}
+.btn1{
+    margin-left: 70%;
+    background: red;
+}
+.bg-light{
+    text-align: none;
+}

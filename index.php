@@ -1,12 +1,16 @@
+
 <?php
 
 $hour = ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30", "12:35", "12:40", "12:45", "12:50", "12:55", "13:00"];
 $user = ["Jackie","Romuald", "Allison", "Gérard", "Thomas", "Jeanne, 'Janine", "Michel"];
 
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,25 +40,48 @@ $user = ["Jackie","Romuald", "Allison", "Gérard", "Thomas", "Jeanne, 'Janine", 
 ?>
 
 
-    <form id="validateSlot" method="POST" action="index.php">
-        <label for="user-select">Select a user</label>
-        <select name="user" id="user-select">
-	        <?php foreach($user as $key => $value){ ?>
-	            <option value="<?=$key?>"><?=$value?></option>
-	        <?php } ?>
-        </select>
-       
-        <label>Pick a date</label>
-        <?php foreach($hour as $key => $value){ ?>
-            <label for="<?=$key?>"> <?= $value ?> </label>
-            <input id="<?=$key?>" name="hour" class="btn btn-danger" data-hour="<?= $value ?>" type="radio" value="<?= $key ?>"/>
-        <?php } ?>
-        
-        <button type="submit" name="btnSubmit">Valider</button>
-    </form>
+   
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <div class="container p-4">
+        <h1 class="text-center">BIENVENUE SUR</h1>
+        <div class="text-center">
+            <img class="p-4 img-fluid" src="assets/image/logo_chronomiam.png" alt="logo-chrono-miam">
+        </div>
+        <div class="text-center p-3">
+
+            <h3>Application de réservation de Micro-onde pour le centre de LA MANU du Havre.</h3>
+        </div>
+        <div class="text-center p-3">
+            <h3>
+                <p>Marre d'attendre pour rechauffer votre repas?</p>
+                <div class="text-center">
+                    <p>Avec CHRONO-MIAM, vous pourrez réserver le micro-onde pour manger avant les autres!</p>
+            </h3>
+        </div>
+    </div>
+<div class="text-center">
+    <form id="validateSlot" method="POST" action="index.php">
+        <label for="user-select">Select a user</label>
+        <select name="user" id="user-select">
+			<?php foreach($user as $key => $value){ ?>
+                <option value="<?=$key?>"><?=$value?></option>
+			<?php } ?>
+        </select>
+
+        <label>Pick a date</label>
+		<?php foreach($hour as $key => $value){ ?>
+            <label for="<?=$key?>"> <?= $value ?> </label>
+            <input id="<?=$key?>" name="hour" class="btn btn-danger" data-hour="<?= $value ?>" type="radio" value="<?= $key ?>"/>
+		<?php } ?>
+
+        <button type="submit" name="btnSubmit">Valider</button>
+    </form>
+    </div>
 </body>
+
 </html>
+
