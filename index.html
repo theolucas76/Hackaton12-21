@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Compte a rebours</title>
+</head>
+
+<body>
+    <div id="hourly_count"></div>
+    <script type="text/javascript">
+        function hourly_count() {
+            var hourly_count = document.getElementById("hourly_count");
+            var date_today = new Date();
+            var date_evenement = new Date("Dec 13 15:00:00 2021");
+            var total_secondes = (date_evenement - date_today) / 1000;
+            if (total_secondes > 0) {
+                var jours = Math.floor(total_secondes / (60 * 60 * 24));
+                var heures = Math.floor((total_secondes - (jours * 60 * 60 * 24)) / (60 * 60));
+                minutes = Math.floor((total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
+                secondes = Math.floor(total_secondes - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
+                hourly_count.innerHTML =' ' + heures + ' ' + ":" + ' ' + minutes + ' ' + ":" + ' ' + ' ' + secondes + ' ';
+            } else {
+                hourly_count.innerHTML = 'Compte à rebours terminé';
+            }
+            var actualisation = setTimeout("hourly_count();", 1000);
+        }
+        hourly_count();
+    </script>
+</body>
+</html>
