@@ -41,7 +41,7 @@
         <h1 class="p-4">Choix de l'étage</h1>
         <div class="p-4">
             <p>
-            <form action="etage2.php">
+            <form action="list.php">
                 <input class=" text-white button2 justify-content-center" type="submit" value="Etage 2">
             </form>
             </p>
@@ -49,7 +49,7 @@
         </div>
         <div class="p-4">
             <p>
-            <form action="etage3.php">
+            <form action="list.php">
                 <input class="text-white button3 justify-content-center" type="submit" value="Etage 3">
             </form>
             </p>
