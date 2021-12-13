@@ -1,5 +1,5 @@
 <?php
-namespace ChronoMiam\Database;
+namespace API\Database;
 
 use PDO;
 

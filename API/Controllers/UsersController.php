@@ -1,40 +1,40 @@
 <?php
 
-namespace ChronoMiam\Controllers;
+namespace API\Controllers;
 
-use ChronoMiam\API\Databases\UsersInstance;
+use API\Database\UsersInstance;
+use API\Entities\User;
+use function Sodium\add;
 
 class UsersController {
-	
-	public function postAction( string $login, string $password ) : string {
-	
-		if( $login === null ){
-			return 'Bad login';
+
+	public function getAction( int $id ) {
+		if( $id !== null ) {
+			$myUser = new User();
+			$myUser = (new \API\Database\UsersInstance)->get($id);
+			return $myUser;
+		}else{
+			return 'pas bien';
 		}
-		if( $password === null ){
-			return 'Bad password';
+	}
+	
+	public function postAction( string $login, string $password ) {
+		if( $login === null ) {
+			return false;
+		}
+		if( $password === null ) {
+			return false;
 		}
 		
 		$myUser = new User();
 		$myUser->setLogin($login);
 		$myUser->setPassword($password);
 		
-		//go to BDD
-	
+		if( (new \API\Database\UsersInstance())->add($myUser) ){
+			return $myUser;
+		}
+		return false;
 	}
-	
-	public function getAction(int $id) : User {
-	
-			$myUser =
-	
-	}
-	
-	public function get( int $id ) {
-		$pdo = $this->connector();
-		$myStmt = $pdo->prepare("SELECT * FROM users WHERE id = '$id'");
-		$myStmt->execute();
-		return $myStmt->fetch();
-	}
-	
+
 	
 }
