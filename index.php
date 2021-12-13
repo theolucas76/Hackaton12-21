@@ -1,6 +1,8 @@
 <?php
 
 $hour = ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30", "12:35", "12:40", "12:45", "12:50", "12:55", "13:00"];
+$user = ["Jackie","Romuald", "Allison", "Gérard", "Thomas", "Jeanne, 'Janine", "Michel"];
+
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +18,39 @@ $hour = ["12:00", "12:05", "12:10", "12:15", "12:20", "12:25", "12:30", "12:35",
 </head>
 <body>
 <?php
-    echo $_POST['hour'];
+
+
+   if( isset( $_POST['btnSubmit'] ) ) {
+       if( isset($_POST['hour']) && isset($_POST['user'])) {
+            
+            $pdo = new PDO( 'mysql:host=37.187.126.240;port=3306;dbname=hackathon;', 'hackathon', 'c58RqqL7H');
+            
+            $myQ = $pdo->prepare( 'INSERT INTO booking (time, id_micro, id_user) VALUES (:time, :id_mirco, :id_user) ' );
+            $myQ->bindValue(':time', (int)$_POST['hour']);
+            $myQ->bindValue(':id_micro', 1);
+            $myQ->bindValue( ':id_user', $_POST['user']);
+            $myQ->execute();
+            
+       }
+   }
 ?>
+
+
     <form id="validateSlot" method="POST" action="index.php">
+        <label for="user-select">Select a user</label>
+        <select name="user" id="user-select">
+	        <?php foreach($user as $key => $value){ ?>
+	            <option value="<?=$key?>"><?=$value?></option>
+	        <?php } ?>
+        </select>
+       
+        <label>Pick a date</label>
         <?php foreach($hour as $key => $value){ ?>
-            <input id="<?= $key ?>" name="hour" class="btn btn-danger" type="submit" data-hour="<?= $value ?>" value="<?= $value ?>"/>
+            <label for="<?=$key?>"> <?= $value ?> </label>
+            <input id="<?=$key?>" name="hour" class="btn btn-danger" data-hour="<?= $value ?>" type="radio" value="<?= $key ?>"/>
         <?php } ?>
+        
+        <button type="submit" name="btnSubmit">Valider</button>
     </form>
 
     <script src="script.js"></script>
